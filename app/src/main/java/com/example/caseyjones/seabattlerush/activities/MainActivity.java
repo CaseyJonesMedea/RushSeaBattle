@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private BotField userField;
 
+    private static final int SHIPS = 10;
+    private static final int MAXDECK = 4;
+    private static final int MAXDECKCOUNT = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         changeField.setOnClickListener(this);
 
-        BotField botField = new BotField(10, 4, 1);
+        BotField botField = new BotField(SHIPS, MAXDECK, MAXDECKCOUNT);
         botField.generateField();
         botFragment = BotFragment.newInstance(botField.getField());
         userLogic = new UserLogic(botField.getField());
 
-        userField = new BotField(10, 4, 1);
+        userField = new BotField(SHIPS, MAXDECK, MAXDECKCOUNT);
         userField.generateField();
         userFragment = UserFragment.newInstance(userField.getField());
         botLogic = new BotLogic(this, userField.getField());
